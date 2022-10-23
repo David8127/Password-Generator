@@ -28,14 +28,34 @@ function getRandomInt(max) {
 function generatePassword() {
   // Step 1 Ask if how many characters does the user want the password to be?
   var passwordLength = prompt('How many characters would you like your password to be? (8 - 128)', '12')
+    if (passwordLength > 128 || passwordLength < 8) {
+      alert("Invalid password length. Must be between 8-128 characters!")
+      return generatePassword();
+    }
   // Step 2 Ask if the user wants to use uppercase
   var useUppercase = confirm('Would you like to include uppercase letters?')
+    if (!useUppercase) {
+      alert("Invalid response, please select again.")
+      return generatePassword();
+  }
   // Step 3 Ask if the user wants to use lowercase
   var useLowercase = confirm('Would you like to include lowercase letters?')
+    if (!useLowercase) {
+      alert("Invalid response, please select again.")
+      return generatePassword();
+    }
   // Step 4 Ask if the user wants to use numbers
   var useNumbers = confirm('Would you like to include numbers?')
+    if (!useNumbers) {
+      alert("Invalid response, please select again.")
+      return generatePassword();
+    }
   // Step 5 Ask if the user wants to use special chars
   var useSpecialChars = confirm('Would you like to include special characters?')
+    if (!useSpecialChars) {
+      alert("Invalid response, please select again.")
+      return generatePassword();
+    }
 
   // Arrange the proper characters and letters and numbers, into a data structure, that we can extract 
   // a random character for each number of the length.
@@ -64,8 +84,8 @@ function generatePassword() {
   for (var i = 0; i < passwordLength; i++) {
     password = password + potentialChars[getRandomInt(potentialChars.length)]
   }
-
-  return password
+  
+  return password;
 }
 
 
